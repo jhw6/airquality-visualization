@@ -1,0 +1,10 @@
+module.exports = {
+  devServer: {
+    host: '0.0.0.0', // 允许任何IP地址访问
+    port: 5173, // 你的项目端口号
+    disableHostCheck: true, // 禁用主机检查
+    headers: {
+      'Access-Control-Allow-Origin': '*' // 允许跨域访问，根据需要设置
+    }
+  }
+}

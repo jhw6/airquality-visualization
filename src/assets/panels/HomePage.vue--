@@ -1,0 +1,96 @@
+<template>
+  <div class="calculator">
+    <h2>混凝土放热量与绝热温升计算器</h2>
+    <div class="input-group">
+      <label for="inputA">变量A:</label>
+      <input id="inputA" v-model.number="a" type="number" placeholder="请输入数字">
+    </div>
+    <div class="input-group">
+      <label for="inputB">变量B:</label>
+      <input id="inputB" v-model.number="b" type="number" placeholder="请输入数字">
+    </div>
+    <div class="input-group">
+      <label for="inputC">变量C:</label>
+      <input id="inputC" v-model.number="c" type="number" placeholder="请输入数字">
+    </div>
+    <button @click="calculateSum">计算总和</button>
+    <div class="result" v-if="showResult">
+      总和 S = {{ sum }}
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const a = ref(0);
+const b = ref(0);
+const c = ref(0);
+const sum = ref(0);
+const showResult = ref(false);
+
+const calculateSum = () => {
+  sum.value = a.value + b.value + c.value;
+  showResult.value = true;
+};
+</script>
+
+<style scoped>
+.calculator {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+</style>
